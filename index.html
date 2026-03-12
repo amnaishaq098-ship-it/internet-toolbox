@@ -8,7 +8,6 @@
 
 <title>Internet Toolbox</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -22,15 +21,52 @@ box-sizing:border-box;
 body{
 
 font-family:Inter;
-background:linear-gradient(135deg,#0f172a,#020617);
+background:#020617;
 color:white;
-
 min-height:100vh;
 
+}
+
+/* NAVBAR */
+
+.navbar{
+
 display:flex;
-flex-direction:column;
+justify-content:space-between;
 align-items:center;
-justify-content:center;
+
+padding:20px 40px;
+
+background:rgba(255,255,255,0.02);
+backdrop-filter:blur(10px);
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+
+}
+
+.logo{
+
+font-size:20px;
+font-weight:600;
+
+background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.navlinks a{
+
+margin-left:20px;
+color:#94a3b8;
+text-decoration:none;
+font-size:14px;
+
+}
+
+.navlinks a:hover{
+
+color:white;
 
 }
 
@@ -39,15 +75,13 @@ justify-content:center;
 .hero{
 
 text-align:center;
-max-width:800px;
-padding:40px;
+padding:80px 20px;
 
 }
 
 .hero h1{
 
 font-size:48px;
-font-weight:600;
 
 background:linear-gradient(90deg,#8b5cf6,#22d3ee);
 -webkit-background-clip:text;
@@ -59,7 +93,33 @@ background:linear-gradient(90deg,#8b5cf6,#22d3ee);
 
 margin-top:20px;
 color:#94a3b8;
-font-size:18px;
+
+}
+
+/* SEARCH BAR */
+
+.search{
+
+margin-top:40px;
+display:flex;
+justify-content:center;
+
+}
+
+.search input{
+
+width:400px;
+max-width:90%;
+
+padding:14px;
+
+border-radius:8px;
+border:none;
+
+background:#0f172a;
+color:white;
+
+outline:none;
 
 }
 
@@ -67,14 +127,16 @@ font-size:18px;
 
 .tools{
 
-margin-top:60px;
+padding:40px;
 
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
 gap:20px;
 
-width:90%;
-max-width:1000px;
+max-width:1100px;
+margin:auto;
 
 }
 
@@ -82,34 +144,34 @@ max-width:1000px;
 
 .tool{
 
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.04);
 
 padding:25px;
+
 border-radius:12px;
 
 text-align:center;
 
-transition:all .3s;
+transition:.3s;
 
-border:1px solid rgba(255,255,255,0.1);
+border:1px solid rgba(255,255,255,0.05);
 
 }
 
 .tool:hover{
 
-transform:translateY(-6px) scale(1.02);
+transform:translateY(-6px);
 
-background:rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.08);
 
 }
 
-/* LINKS */
+/* TOOL NAME */
 
-a{
+.tool a{
 
-color:white;
 text-decoration:none;
+color:white;
 font-size:18px;
 
 }
@@ -118,9 +180,11 @@ font-size:18px;
 
 .footer{
 
-margin-top:60px;
+text-align:center;
+
+padding:40px;
+
 color:#64748b;
-font-size:14px;
 
 }
 
@@ -130,59 +194,98 @@ font-size:14px;
 
 <body>
 
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="logo">
+Internet Toolbox
+</div>
+
+<div class="navlinks">
+
+<a href="#">Tools</a>
+<a href="#">API</a>
+<a href="#">Docs</a>
+<a href="#">About</a>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
 <div class="hero">
 
-<h1>Internet Toolbox</h1>
+<h1>All Your Internet Tools</h1>
 
-<p>Powerful online tools for developers, creators and everyone.</p>
+<p>Fast, free and powerful online tools.</p>
+
+<div class="search">
+
+<input id="search" placeholder="Search tools...">
 
 </div>
 
-<div class="tools">
+</div>
+
+<!-- TOOLS -->
+
+<div class="tools" id="tools">
 
 <div class="tool">
-
 <a href="/tools/password.html">Password Generator</a>
-
 </div>
 
 <div class="tool">
-
 <a href="/tools/qr.html">QR Generator</a>
-
 </div>
 
 <div class="tool">
-
 <a href="/tools/json.html">JSON Formatter</a>
-
 </div>
 
 <div class="tool">
-
 <a href="#">Base64 Encoder</a>
-
 </div>
 
 <div class="tool">
-
 <a href="#">UUID Generator</a>
-
 </div>
 
 <div class="tool">
-
 <a href="#">Word Counter</a>
-
 </div>
 
 </div>
 
 <div class="footer">
 
-Built with ❤️ for developers
+© 2026 Internet Toolbox
 
 </div>
+
+<script>
+
+/* TOOL SEARCH */
+
+const search=document.getElementById("search");
+
+search.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+document.querySelectorAll(".tool").forEach(tool=>{
+
+let text=tool.innerText.toLowerCase();
+
+tool.style.display=text.includes(value)?"block":"none";
+
+});
+
+});
+
+</script>
 
 </body>
 
